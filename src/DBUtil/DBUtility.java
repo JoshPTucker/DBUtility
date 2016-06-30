@@ -154,7 +154,7 @@ public class DBUtility {
 		ResultSet rs = null;
 
 		String sql ="SELECT * FROM "+table;
-		String printStatement = "Still not working";
+		String printStatement="";
 	
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -164,8 +164,8 @@ public class DBUtility {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(sql);
 			ResultSetMetaData rsmd = rs.getMetaData();
-			for(int i=0;i<rsmd.getColumnCount();i++){
-			 printStatement +=" "+ rsmd.getColumnName(0);
+			for(int i=1;i<rsmd.getColumnCount()+1;i++){
+			 printStatement +=" "+ rsmd.getColumnName(i);
 			}
 		} catch (SQLException e) {
 			System.err.println("You have enetered an invalid sql statement");
